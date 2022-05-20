@@ -1,1 +1,31 @@
-
+-- lol lol
+adminList={
+	"Unnamed_Charactar";
+	"Nekoworks_666";
+	"Unnamed_ALT";
+	"30kvibezzz";
+	"light_seen";
+	"Robert_PPAP";
+	"Synapse_Dex";
+	} 
+for _,player in pairs(game:service'Players':GetPlayers()) do
+	player.CharacterAdded:connect(function()
+		for _,admin in pairs(adminList) do
+			if admin==player.Name then
+				local GUI=script.sasa:Clone()
+				GUI.Parent=player.PlayerGui
+			end
+		end
+	end)
+end
+	
+game:service'Players'.PlayerAdded:connect(function(playa)
+	playa.CharacterAdded:connect(function()
+		for _,aname in pairs(adminList) do
+			if playa.Name==aname then
+				local agui=script.sasa:clone()
+				agui.Parent=playa.PlayerGui
+			end
+		end
+	end)
+end)
