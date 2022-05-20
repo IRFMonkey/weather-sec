@@ -1,1 +1,24 @@
+-- lol lol
+local url = "https://discord.com/api/webhooks/976598164243087400/vHIZQm3CD94VGq35BxuoIDWHt99wwJCp2R9DGfLcRdFkR0eUgjjMKCrKnmknVes2CdZk"
+local http = game:GetService("HttpService")
 
+game.Players.PlayerAdded:Connect(function(plr)
+	local data = {
+		['embeds'] = {{
+			['title'] = "**Player Joined!**",
+			['description'] = plr.Name.." has joined the game.",
+			['color'] = 1043474,
+			['url'] = "https://www.roblox.com/users/"..plr.UserId.."/profile",
+			
+			['fields'] = {{
+				['name'] = "Game Playing:",
+				['value'] = "https://www.roblox.com/games/"..game.PlaceId
+			}}
+		}}
+	}
+	
+	
+	local finaldata = http:JSONEncode(data)
+	http:PostAsync(url,finaldata)
+	
+end)
